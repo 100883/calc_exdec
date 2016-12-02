@@ -10,7 +10,7 @@ import calculadora_hexade.Calculadora_Hexade;
 
 /**
  *
- * @author ManaimTI
+ * @author Gui Freitas
  */
 public class TelaCalc extends javax.swing.JFrame {
 
@@ -43,7 +43,7 @@ public class TelaCalc extends javax.swing.JFrame {
 
         jLabel1.setText("Calculadora");
 
-        jLabel2.setText("Número: ");
+        jLabel2.setText("Hexadecimal:");
 
         bt_calcular.setText("Calcular");
         bt_calcular.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +64,7 @@ public class TelaCalc extends javax.swing.JFrame {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,16 +84,17 @@ public class TelaCalc extends javax.swing.JFrame {
                                 .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(bt_calcular)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLayeredPane1)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLayeredPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_numero, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 10, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -129,17 +130,15 @@ public class TelaCalc extends javax.swing.JFrame {
     private void bt_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_calcularActionPerformed
         Calculadora_Hexade ox = new Calculadora_Hexade();
         try {
-            int num = Integer.parseInt(txt_numero.getText());
+            String valor = txt_numero.getText();
 
-            /*            ox.converteDecimalParaBinario(num);
-            ox.converteDecimalParaHexadecimal(num);
-            ox.converteDecimalParaOctal(num);*/
-            String saida = "Binário: " + ox.converteDecimalParaBinario(num) + "\n";
-            saida += "Hexadecimal: " + ox.converteDecimalParaHexadecimal(num) + "\n";
-            saida += "Octal: " + ox.converteDecimalParaOctal(num);
+            String saida = "Decimal: " + ox.converteHexadecimalParaDecimal(valor) + "\n";
+            saida += "Binário: " + ox.converteHexadecimalParaBinario(valor);
 
             jTextArea_Resultado.setText(saida);
             jTextArea_Resultado.setEditable(false);
+            
+            valor = "";
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(rootPane, erro);
