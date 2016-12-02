@@ -130,18 +130,17 @@ public class TelaCalc extends javax.swing.JFrame {
         Calculadora_Hexade ox = new Calculadora_Hexade();
         try {
             int num = Integer.parseInt(txt_numero.getText());
-            
-/*            ox.converteDecimalParaBinario(num);
+
+            /*            ox.converteDecimalParaBinario(num);
             ox.converteDecimalParaHexadecimal(num);
             ox.converteDecimalParaOctal(num);*/
-            
             String saida = "Binário: " + ox.converteDecimalParaBinario(num) + "\n";
-                    saida += "Hexadecimal: " + ox.converteDecimalParaHexadecimal(num) + "\n";
-                    saida += "Octal: " + ox.converteDecimalParaOctal(num);
-                    
-                    jTextArea_Resultado.setText(saida);
-                
-            
+            saida += "Hexadecimal: " + ox.converteDecimalParaHexadecimal(num) + "\n";
+            saida += "Octal: " + ox.converteDecimalParaOctal(num);
+
+            jTextArea_Resultado.setText(saida);
+            jTextArea_Resultado.setEditable(false);
+
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(rootPane, erro);
         }
